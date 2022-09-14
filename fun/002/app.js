@@ -2,20 +2,26 @@
 // массива с клавиатуры. Напишите функцию, которая принимает массив строк и
 // находим там наибольшее по длине текстовое значение. Добавить проверки
 let n = 6;
-function checkLenght(x) {
-    let res = '';
-    if()
-    x.forEach(element => {
-        if (element.length > res.length) {
-            res = element
-        }
-    });
-    return res
+const pushInput = (n) => {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(prompt('enter value'))
+    }
+    return arr
 }
 
 const checkValue = (arr) => {
     const error = arr.filter((el) => isNaN(el))
     return error.length === arr.length ? true : false
 }
-
-console.log(checkLenght);
+const findValue = (arr) => {
+    if (checkValue(arr)) {
+        let total = arr[0];
+        arr.forEach(el => el.length > total.length ? total = el : null)
+        return total
+    } else {
+        return 'ERROR'
+    }
+}
+const data = pushInput(3)
+console.log(findValue(data));
