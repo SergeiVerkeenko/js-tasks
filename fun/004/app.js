@@ -22,7 +22,7 @@ function checkArray(newArr) {
 
 function doArr(array) {
     const arr = [];
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < n; i++) {
         arr.push(prompt(''))
     }
     return arr
@@ -31,4 +31,4 @@ const arr = doArr(n)
 
 console.log(getResult(arr));
 
-ДОРЕШАТЬ
+
