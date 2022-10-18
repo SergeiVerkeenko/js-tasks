@@ -33,7 +33,8 @@ class Client {
 
                 const clientData = JSON.stringify({ email: email, pwd: pwd })
                 const server = new Server();
-                server.controller(clientData)
+                const response = server.controller(clientData);
+                document.querySelector('.res').innerHTML = response
             } catch (error) {
                 alert(error.message)
             }
@@ -50,17 +51,25 @@ class Client {
 
 class Server {
 
-    middleware() {
-
+    middleware(email) {
+        if (!email) throw new Error('Email null')
     }
 
     controller(clientData) {
-        const parsedClientData = JSON.parse(clientData);
-        this.service(parsedClientData);
+        try {
+            const parsedClientData = JSON.parse(clientData);
+            this.middleware(parsedClientData.email);
+            return JSON.stringify(this.service(parsedClientData));
+
+        } catch (error) {
+            return error.message
+        }
     }
 
     service(parsedClientData) {
-        this.repository(parsedClientData)
+        const rep = this.repository(parsedClientData)
+        if (!rep.length) throw new Error('Arr null')
+        return rep
     }
 
     repository(parsedClientData) {
@@ -71,12 +80,14 @@ class Server {
         { "id": 4, "email": "german@mail.ru", "pwd": "pwdqqq111" },
         { "id": 5, "email": "maria@mail.ru", "pwd": "pwd746552" }
         ]`
-        const parsedDB = JSON.parse(arr)
-        const filtered = parsedDB.filter(el => el.email === parsedClientData.email)
+        let parsedDB = JSON.parse(arr)
+        const filtered = parsedDB.filter(el => el.email !== parsedClientData.email)
         if (filtered.length !== parsedDB.length) throw new Error('совпадения есть')
-        else filtered.push(parsedClientData)
+        filtered.push({ id: Math.floor(Math.random() * 100), ...parsedClientData })
+        parsedDB = filtered
+        return parsedDB
     }
 
 }
-}
+
 const client = new Client();
