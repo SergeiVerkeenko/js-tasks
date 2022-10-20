@@ -1,4 +1,4 @@
-let numb = prompt('Введите большую цифру диапазона угадывания');
+let numb = prompt('Введитецифру диапазона угадывания');
 const arr = [];
 for (let i = 0; i <= numb; i++) {
     arr.push(i)
@@ -12,8 +12,7 @@ function searchBinary(arr) {
         let b = prompt(`Твое число ${middle}?`).toLowerCase();
         if (b == 'да') {
             return alert(`Я угадал`)
-            // return middle
-        } else if (b == 'да') {
+        } else if (b == 'нет') {
             let a = prompt(`Больше или меньше ${middle}`).toLowerCase();
             if (a == 'больше') {
                 start = middle + 1;
@@ -26,9 +25,7 @@ function searchBinary(arr) {
     }
 }
 console.log(searchBinary(arr));
-for (; ;) {
 
-}
 
 
 
