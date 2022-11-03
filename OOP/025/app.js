@@ -1,15 +1,15 @@
-function myl() {
-    let sum = 0;
-    return () => {
-        return ++sum
-    }
-}
-const p = myl()
-console.log(p());
-console.log(p());
-console.log(p());
-console.log(p());
-console.log(p());
+// function myl() {
+//     let sum = 0;
+//     return () => {
+//         return ++sum
+//     }
+// }
+// const p = myl()
+// console.log(p());
+// console.log(p());
+// console.log(p());
+// console.log(p());
+// console.log(p());
 
 class Zam {
     sum = 0;
