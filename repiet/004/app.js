@@ -20,7 +20,7 @@ const audio = document.createElement('audio')
 let flag = false
 playBtn.addEventListener('click', () => {
     audio.src = arr[indexMysic].src
-    if (flag === false) {
+    if (!flag) {
         playBtn.textContent = 'выкл'
         audio.play()
         flag = true
