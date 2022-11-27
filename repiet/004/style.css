@@ -27,6 +27,7 @@
     height: 170px;
     background-image: url(./img/thumbnail-img.svg);
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .nameSong {
@@ -59,6 +60,14 @@
     height: 3px;
     background: #DADADA;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.progress{
+    /* width: 257px; */
+    height: 3px;
+    background: #c92a2a;
+    cursor: pointer;
 }
 
 .midlLine {
