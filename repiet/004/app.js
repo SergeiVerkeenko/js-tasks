@@ -19,20 +19,11 @@ let indexMysic = 0;
 const audio = document.createElement('audio')
 let flag = false
 playBtn.addEventListener('click', () => {
-    audio.src = arr[indexMysic].src
-    if (!flag) {
-        playBtn.textContent = 'выкл'
-        audio.play()
-        flag = true
-    } else {
-        playBtn.textContent = 'вкл'
-        audio.pause()
-        flag = false
-    }
+    currentSong()
 })
 
-document.querySelector('.right').addEventListener('click', () => {
-    if (indexMysic === arr.length-1) {
+document.querySelector('.nextSong').addEventListener('click', () => {
+    if (indexMysic === arr.length - 1) {
         indexMysic = 0
     } else {
         indexMysic++
@@ -40,7 +31,7 @@ document.querySelector('.right').addEventListener('click', () => {
     changeSong()
 })
 
-document.querySelector('.left').addEventListener('click', () => {
+document.querySelector('.previousSong').addEventListener('click', () => {
     if (indexMysic === 0) {
         indexMysic = arr.length - 1
     } else {
@@ -57,11 +48,9 @@ function changeSong() {
 function currentSong() {
     audio.src = arr[indexMysic].src
     if (flag === false) {
-        playBtn.textContent = 'выкл'
         audio.play()
         flag = true
     } else {
-        playBtn.textContent = 'вкл'
         audio.pause()
         flag = false
     }
