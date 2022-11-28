@@ -63,8 +63,7 @@
     cursor: pointer;
 }
 
-.progress{
-    /* width: 257px; */
+.progress {
     height: 3px;
     background: #c92a2a;
     cursor: pointer;
@@ -120,13 +119,46 @@
     top: 35px;
     border-radius: 17px;
     background: #FFFFFF;
+
 }
 
-.like{
+.like {
     width: 21px;
     height: 21px;
     background-image: url(./img/Icon\ \(1\).svg);
     background-repeat: no-repeat;
     margin-top: 8px;
 
+}
+/* .likeRed{
+    width: 23px;
+    margin: 0 0 0 0;
+    font-size: 20px;
+    background-color: #c92a2a;
+    text-align: center;
+} */
+
+.strelkaLeft {
+    background-image: url(./img/preus.svg);
+    width: 21px;
+    height: 21px;
+    background-repeat: no-repeat;
+    margin: 11px 0 0 6px;
+}
+
+.strelkaPlay {
+    background-image: url(./img/Play.svg);
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.strelkaNext {
+    width: 21px;
+    height: 21px;
+    background-image: url(./img/next.svg);
+    background-repeat: no-repeat;
+    margin: 11px 0 0 9px;
 }

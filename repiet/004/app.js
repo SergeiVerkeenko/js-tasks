@@ -5,25 +5,29 @@ const arr = [
         src: './1.mp3',
         title: 'Три полоски',
         ispolnitel: 'Animal ДжаZ',
-        img: '../004/img/альбомы/animalJazz.jpg'
+        img: '../004/img/альбомы/animalJazz.jpg',
+        like: 'nolike'
     },
     {
         src: './2.mp3',
         title: 'Ты Меня Не Ищи',
         ispolnitel: 'Вирус',
-        img: '../004/img/альбомы/virus.jpg'
+        img: '../004/img/альбомы/virus.jpg',
+        like: 'nolike'
     },
     {
         src: './3.mp3',
         title: '100 дней до приказа',
         ispolnitel: 'НеИгрушки',
-        img: '../004/img/альбомы/100.jpg'
+        img: '../004/img/альбомы/100.jpg',
+        like: 'nolike'
     },
     {
         src: './4.mp3',
         title: 'Ангелы здесь больше не живут',
         ispolnitel: 'Ульяна Каракоз',
-        img: '../004/img/альбомы/ангелы.jpg'
+        img: '../004/img/альбомы/ангелы.jpg',
+        like: 'nolike'
     }
 ]
 
@@ -41,6 +45,7 @@ document.querySelector('.nextSong').addEventListener('click', () => {
     } else {
         indexMysic++
     }
+    flag = true
     currentTitle()
     changeSong()
 })
@@ -51,6 +56,7 @@ document.querySelector('.previousSong').addEventListener('click', () => {
     } else {
         indexMysic--
     }
+    flag = true
     currentTitle()
     changeSong()
 })
@@ -61,12 +67,14 @@ function changeSong() {
 }
 function currentSong() {
     audio.src = arr[indexMysic].src
-    if (flag === false) {
-        audio.play()
-        flag = true
-    } else {
+    if (flag) {
         audio.pause()
         flag = false
+        document.querySelector('.strelkaPlay').style.backgroundImage = 'url(./img/Play.svg)'
+    } else {
+        audio.play()
+        document.querySelector('.strelkaPlay').style.backgroundImage = 'url(./img/pause.png)'
+        flag = true
     }
 }
 
@@ -80,9 +88,15 @@ function currentTitle() {
     img.style.backgroundImage = `url(${arr[indexMysic].img})`
 }
 
-//корректировка прогресса
+//корректировка прогресса и времени
 function updateProgress(event) {
     const { duration, currentTime } = event.srcElement;
+    if (currentTime % 60 > 10) {
+        document.querySelector('.time').textContent = `0${Math.floor(currentTime / 60)}:${Math.floor(currentTime % 60)}`
+    } else {
+        document.querySelector('.time').textContent = `0${Math.floor(currentTime / 60)}:0${Math.floor(currentTime % 60)}`
+
+    }
     const progressPersent = (currentTime / duration) * 100;
     document.querySelector('.progress').style.width = `${progressPersent}%`
 }
@@ -109,4 +123,13 @@ audio.addEventListener('ended', () => {
     currentTitle()
     changeSong()
 
+})
+
+// возможность ставить лайк
+document.querySelector('.like').addEventListener('click', () => {
+    if (arr[indexMysic].like='nolike') {
+        arr[indexMysic].like = 'like'
+    } else{
+        arr[indexMysic].like = 'nolike'
+    }
 })
