@@ -65,6 +65,8 @@ function changeSong() {
     audio.src = arr[indexMysic].src
     audio.play()
 }
+
+
 function currentSong() {
     audio.src = arr[indexMysic].src
     if (flag) {
@@ -77,6 +79,8 @@ function currentSong() {
         flag = true
     }
 }
+
+
 
 // изменение названия песни и исполнителя, плюс изменение картинки альбома
 function currentTitle() {
