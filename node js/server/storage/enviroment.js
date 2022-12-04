@@ -14,13 +14,4 @@ let DB = [
     { "id": "adobephotoshop", "label": "Adobe Photoshop", "category": "otherSkills", "priority": 2 },
 ]
 
-function getEnviroment() {
-    return DB
-}
-
-function getEnviromentById(id) {
-    let filtered = DB.filter(el => el.id === id)
-    return filtered
-}
-
-module.exports = { getEnviroment, getEnviromentById };
+module.exports = DB

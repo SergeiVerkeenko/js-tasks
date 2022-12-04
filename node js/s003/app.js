@@ -8,8 +8,10 @@ app.get('/:id', (req, res) => {
     res.send(result)
 })
 
-app.post('/', (req, res) => {
-    res.send('hey POST')
+app.post('/:id', (req, res) => {
+    const { id } = req.params
+    let result = getEnviromentById(id)
+    res.send(result)
 })
 
 app.listen(8000, () => console.log('Servak ready'))
