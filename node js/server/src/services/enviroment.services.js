@@ -1,50 +1,76 @@
-let DB = require('../../storage/enviroment')
+const { readFileSync, writeFileSync } = require('fs');
 
-function getEnviroment() {
-    return DB
+class Enviroment {
+
+    path = "storage/enviroment.json";
+
+    readFile() {
+        return JSON.parse(readFileSync(this.path));
+    }
+
+    writeFile(DB) {
+        writeFileSync(this.path, JSON.stringify(DB), 'utf8');
+
+    }
+
+    getEnviroment() {
+        const DB = this.readFile()
+        if (!DB.length) throw new Error('JSON is empty')
+        return DB
+    }
+
+    getEnviromentById(id) {
+        const DB = this.readFile()
+        if (!DB.length) throw new Error('JSON is empty')
+
+        const filtered = DB.filter(el => el.id === id)
+        return filtered
+    }
+
+    createEnviroment(label, category, priority) {
+        const DB = this.readFile()
+
+        DB.push({ id: label.toLowerCase(), label, category, priority })
+        this.writeFile(DB)
+        return DB
+    }
+
+    updateEnviroments(id, label, category, priority) {
+        const DB = this.readFile()
+
+        const res = DB.filter(el => el.id !== id)
+
+        if (res.length === DB.length) throw new Error('Id is not defind in DB')
+
+        res.push({
+            id, label, category, priority
+        })
+        this.writeFile(res)
+
+        return res
+    }
+
+    deleteEnviroment(id) {
+        const DB = this.readFile()
+        let filtered = DB.filter(el => el.id !== id)
+        if (filtered.length === DB.length) throw new Error('Error is not delete')
+        this.writeFile(filtered)
+
+        return filtered
+
+    }
+
+    patchEnviroment(id, enviromentClient) {
+        const DB = this.readFile()
+        const filtered = DB.filter(el => el.id === id)
+        const merge = { ...filtered[0], ...enviromentClient }
+        const wihtoutFiltered = DB.filter(el => el.id !== id)
+        if (wihtoutFiltered.length === DB.length) throw new Error('Error patch')
+        wihtoutFiltered.push(merge)
+        this.writeFile(wihtoutFiltered)
+
+        return wihtoutFiltered
+    }
 }
 
-function getEnviromentById(id) {
-    const filtered = DB.filter(el => el.id === id)
-    return filtered
-}
-
-function createEnviroment(label, category, priority) {
-    DB.push({ id: label.toLowerCase(), label, category, priority })
-    return DB
-}
-
-function updateEnviroments(id, label, category, priority) {
-    const res = DB.filter(el => el.id !== id)
-
-    if (res.length === DB.length) throw new Error('Id is not defind in DB')
-
-    res.push({
-        id, label, category, priority
-    })
-    DB = res
-
-    return DB
-}
-
-function deleteEnviroment(id) {
-    let filtered = DB.filter(el => el.id !== id)
-    if (filtered.length === DB.length) throw new Error('Error is not delete')
-    DB = filtered
-
-    return DB
-
-}
-
-function patchEnviroment(id, enviromentClient) {
-    const filtered = DB.filter(el => el.id === id)
-    const merge = { ...filtered[0], ...enviromentClient }
-    const wihtoutFiltered = DB.filter(el => el.id !== id)
-    if (wihtoutFiltered.length === DB.length) throw new Error('Error patch')
-    wihtoutFiltered.push(merge)
-    DB = wihtoutFiltered
-
-    return DB
-}
-
-module.exports = { getEnviroment, getEnviromentById, createEnviroment, updateEnviroments, deleteEnviroment, patchEnviroment }
+module.exports = { Enviroment }
