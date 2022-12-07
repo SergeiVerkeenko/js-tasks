@@ -2,32 +2,32 @@ const playBtn = document.querySelector('.play')
 
 const arr = [
     {
-        src: './1.mp3',
+        src: './audio./1.mp3',
         title: 'Три полоски',
         ispolnitel: 'Animal ДжаZ',
-        img: '../004/img/альбомы/animalJazz.jpg',
-        like: 'nolike'
+        img: './img/альбомы/animalJazz.jpg',
+        like: false
     },
     {
-        src: './2.mp3',
+        src: './audio./2.mp3',
         title: 'Ты Меня Не Ищи',
         ispolnitel: 'Вирус',
-        img: '../004/img/альбомы/virus.jpg',
-        like: 'nolike'
+        img: './img/альбомы/virus.jpg',
+        like: false
     },
     {
-        src: './3.mp3',
+        src: './audio./3.mp3',
         title: '100 дней до приказа',
         ispolnitel: 'НеИгрушки',
-        img: '../004/img/альбомы/100.jpg',
-        like: 'nolike'
+        img: './img/альбомы/100.jpg',
+        like: false
     },
     {
-        src: './4.mp3',
+        src: './audio./4.mp3',
         title: 'Ангелы здесь больше не живут',
         ispolnitel: 'Ульяна Каракоз',
-        img: '../004/img/альбомы/ангелы.jpg',
-        like: 'nolike'
+        img: './img/альбомы/ангелы.jpg',
+        like: false
     }
 ]
 
@@ -75,7 +75,7 @@ function currentSong() {
         document.querySelector('.strelkaPlay').style.backgroundImage = 'url(./img/Play.svg)'
     } else {
         audio.play()
-        document.querySelector('.strelkaPlay').style.backgroundImage = 'url(./img/pause.png)'
+        document.querySelector('.strelkaPlay').style.backgroundImage = 'url(./img/pause.svg)'
         flag = true
     }
 }
@@ -84,12 +84,14 @@ function currentSong() {
 
 // изменение названия песни и исполнителя, плюс изменение картинки альбома
 function currentTitle() {
-    let ispol = document.querySelector('.ispolnitel');
-    ispol.textContent = arr[indexMysic].ispolnitel;
-    let nameSong = document.querySelector('.nameSong');
-    nameSong.textContent = arr[indexMysic].title;
-    const img = document.querySelector('.img')
-    img.style.backgroundImage = `url(${arr[indexMysic].img})`
+    document.querySelector('.ispolnitel').textContent = arr[indexMysic].ispolnitel;
+    document.querySelector('.nameSong').textContent = arr[indexMysic].title;
+    document.querySelector('.img').style.backgroundImage = `url(${arr[indexMysic].img})`
+    if (arr[indexMysic].like) {
+        document.querySelector('.like').style.backgroundImage = 'url(../004/img/like.svg)'
+    } else {
+        document.querySelector('.like').style.backgroundImage = 'url(../004/img/nolike.svg)'
+    }
 }
 
 //корректировка прогресса и времени
@@ -131,9 +133,12 @@ audio.addEventListener('ended', () => {
 
 // возможность ставить лайк
 document.querySelector('.like').addEventListener('click', () => {
-    if (arr[indexMysic].like='nolike') {
-        arr[indexMysic].like = 'like'
-    } else{
-        arr[indexMysic].like = 'nolike'
+    if (!arr[indexMysic].like) {
+        arr[indexMysic].like = true
+        document.querySelector('.like').style.backgroundImage = 'url(../004/img/like.svg)'
+    } else {
+        arr[indexMysic].like = false
+        document.querySelector('.like').style.backgroundImage = 'url(../004/img/nolike.svg)'
     }
+
 })
