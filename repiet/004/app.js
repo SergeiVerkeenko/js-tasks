@@ -48,6 +48,8 @@ document.querySelector('.nextSong').addEventListener('click', () => {
     flag = true
     currentTitle()
     changeSong()
+
+    
 })
 
 document.querySelector('.previousSong').addEventListener('click', () => {
