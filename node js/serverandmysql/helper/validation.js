@@ -1,4 +1,5 @@
 class Validation {
+    
     isValidId(req, res, next) {
         const { id } = req.params
         if (!id) throw new Error('id is invalid')

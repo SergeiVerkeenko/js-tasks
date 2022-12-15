@@ -7,6 +7,7 @@ const validation = new Validation()
 const enviroment = new Enviroment()
 const route = express.Router()
 
+
 route.get('/', async (req, res) => {
     try {
         const data = await enviroment.getEnviroment()
