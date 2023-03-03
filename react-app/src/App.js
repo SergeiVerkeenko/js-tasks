@@ -1,5 +1,13 @@
 import './App.css';
 import Task1 from './pages/Task1';
+// import Task10 from './pages/Task10';
+// import Task11 from './pages/Task11';
+// import Task12 from './pages/Task12';
+// import Task13 from './pages/Task13';
+// import Task14 from './pages/Task14';
+// import Task15 from './pages/Task15';
+// import Task16 from './pages/Task16';
+import Task17 from './pages/Task17';
 import Task2 from './pages/Task2';
 import Task3 from './pages/Task3';
 import Task4 from './pages/Task4';
@@ -12,7 +20,7 @@ import Task9 from './pages/Task9';
 function App() {
   return (
     <div>
-      <Task1></Task1>
+      {/* <Task1></Task1>
       <hr></hr>
       <Task2 />
       <hr></hr>
@@ -25,10 +33,24 @@ function App() {
       <Task6></Task6>
       <hr></hr>
       {/* <Task7></Task7>
-      <hr></hr> */}
+      <hr></hr> 
       <Task8></Task8>
       <hr></hr>
       <Task9></Task9>
+      <hr></hr> */}
+      {/* <Task10></Task10>
+      <hr></hr>
+      <Task11></Task11>
+      <hr></hr>
+      <Task12></Task12>
+      <hr></hr>
+      <Task13></Task13>
+      <hr></hr>
+      <Task14></Task14>
+      <hr></hr>
+      <Task15></Task15>
+      <Task16></Task16> */}
+      <Task17></Task17>
     </div>
   );
 }
