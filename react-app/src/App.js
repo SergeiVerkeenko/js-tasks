@@ -8,6 +8,12 @@ import Task1 from './pages/Task1';
 // import Task15 from './pages/Task15';
 // import Task16 from './pages/Task16';
 import Task17 from './pages/Task17';
+import Task18 from './pages/Task18';
+import Task19 from './pages/Task19';
+import Task20 from './pages/Task20';
+import Task21 from './pages/Task21';
+import Task22 from './pages/Task22';
+import Task23 from './pages/Task23/Task23';
 import Task2 from './pages/Task2';
 import Task3 from './pages/Task3';
 import Task4 from './pages/Task4';
@@ -51,6 +57,12 @@ function App() {
       <Task15></Task15>
       <Task16></Task16> */}
       <Task17></Task17>
+      <Task18></Task18>
+      <Task19></Task19>
+      <Task20></Task20>
+      <Task21></Task21>
+      <Task22></Task22>
+      <Task23></Task23>
     </div>
   );
 }
