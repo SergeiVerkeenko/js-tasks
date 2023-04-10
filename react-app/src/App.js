@@ -22,6 +22,7 @@ import Task6 from './pages/Task6';
 import Task7 from './pages/Task7';
 import Task8 from './pages/Task8';
 import Task9 from './pages/Task9';
+import Task24 from './pages/Task24';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
       <Task21></Task21>
       <Task22></Task22>
       <Task23></Task23>
+      <Task24></Task24>
     </div>
   );
 }
